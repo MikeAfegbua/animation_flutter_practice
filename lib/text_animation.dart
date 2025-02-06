@@ -1,34 +1,21 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TextAnimation extends StatefulWidget {
+  const TextAnimation({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: TextAnimationWidget(),
-    );
-  }
+  State<TextAnimation> createState() => _TextAnimationState();
 }
 
-class TextAnimationWidget extends StatefulWidget {
-  const TextAnimationWidget({super.key});
-
-  @override
-  State<TextAnimationWidget> createState() => _TextAnimationWidgetState();
-}
-
-class _TextAnimationWidgetState extends State<TextAnimationWidget>
+class _TextAnimationState extends State<TextAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   @override
   void initState() {
+    super.initState();
+
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 3000),
@@ -36,8 +23,6 @@ class _TextAnimationWidgetState extends State<TextAnimationWidget>
     _animationController
       ..forward()
       ..repeat();
-
-    super.initState();
   }
 
   @override
@@ -48,8 +33,6 @@ class _TextAnimationWidgetState extends State<TextAnimationWidget>
 
   @override
   Widget build(BuildContext context) {
-    final String text = 'Anutio';
-
     return Scaffold(
       backgroundColor: Colors.green,
       body: SafeArea(
@@ -64,12 +47,12 @@ class _TextAnimationWidgetState extends State<TextAnimationWidget>
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
-                    text.length,
-                    (index) => TextShimmerAnimation(
+                    6,
+                    (index) => TextShimmer(
                       key: ValueKey('$index'),
                       animationController: _animationController,
-                      length: text.length,
-                      char: text[index],
+                      length: 6,
+                      char: 'Anutio'[index],
                       index: index + 1,
                     ),
                   ),
@@ -83,32 +66,30 @@ class _TextAnimationWidgetState extends State<TextAnimationWidget>
   }
 }
 
-class TextShimmerAnimation extends StatefulWidget {
-  const TextShimmerAnimation({
+class TextShimmer extends StatefulWidget {
+  const TextShimmer({
+    required this.animationController,
+    required this.length,
     required this.char,
     required this.index,
-    required this.length,
-    required this.animationController,
     super.key,
   });
-
+  final AnimationController animationController;
+  final int length;
   final String char;
   final int index;
-  final int length;
-  final AnimationController animationController;
 
   @override
-  State<TextShimmerAnimation> createState() => _TextShimmerAnimationState();
+  State<TextShimmer> createState() => _TextShimmerState();
 }
 
-class _TextShimmerAnimationState extends State<TextShimmerAnimation> {
+class _TextShimmerState extends State<TextShimmer> {
   late Animation<double> _scaleAnimation;
   late Animation<Color?> colorAnimation;
 
   @override
   void initState() {
     super.initState();
-
     final startValue = (widget.index / widget.length) * 0.5;
     final endValue = math.min(startValue + 0.2, 1);
 
@@ -133,7 +114,7 @@ class _TextShimmerAnimationState extends State<TextShimmerAnimation> {
     colorAnimation = TweenSequence([
       TweenSequenceItem(
         tween: ColorTween(
-          begin: const Color.fromARGB(255, 49, 56, 82),
+          begin: const Color.fromARGB(255, 61, 74, 124),
           end: Colors.white,
         ),
         weight: 50,
@@ -163,9 +144,8 @@ class _TextShimmerAnimationState extends State<TextShimmerAnimation> {
         widget.char,
         style: theme.textTheme.displayLarge!.copyWith(
           color: colorAnimation.value,
-          fontSize: 70,
+          fontSize: 56,
           fontWeight: FontWeight.w400,
-          letterSpacing: 2,
         ),
         textAlign: TextAlign.center,
       ),
