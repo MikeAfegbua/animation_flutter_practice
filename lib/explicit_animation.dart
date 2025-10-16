@@ -1,7 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -57,7 +55,7 @@ class _ScaleAnimationExampleState extends State<ScaleAnimationExample>
           animation: _animation,
           builder: (context, child) {
             return Transform.rotate(
-              angle: pi,
+              angle: _animation.value,
               child: Container(
                 width: 100,
                 height: 100,

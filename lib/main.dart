@@ -58,9 +58,9 @@ class _ScaleAnimationExampleState extends State<ScaleAnimationExample>
             return Transform.scale(
               scale: _animation.value,
               child: Container(
-                width: 100,
-                height: 100,
-                color: Colors.blue,
+                width: 200,
+                height: 200,
+                color: Colors.red,
                 child: Center(
                   child: Text(
                     "Scaling",
@@ -76,8 +76,70 @@ class _ScaleAnimationExampleState extends State<ScaleAnimationExample>
   }
 }
 
-abstract class FirstClass {}
+// abstract class MedicalPractitioner {
+//   void diagnose();
 
-mixin LaterClass {
-  int value = 0;
-}
+//   String get qualification;
+//   bool get wearsLabCoat;
+// }
+
+// mixin GiveInjection {
+//   void giveInjection() {
+//     debugPrint("Giving injection...");
+//   }
+// }
+
+// class DoctorClass with GiveInjection implements MedicalPractitioner {
+//   @override
+//   void diagnose() {
+//     debugPrint("Diagnosing patient...");
+//   }
+
+//   @override
+//   String get qualification => throw UnimplementedError();
+
+//   @override
+//   bool get wearsLabCoat => throw UnimplementedError();
+// }
+
+// class NurseClass implements MedicalPractitioner {
+//   @override
+//   void diagnose() {
+//     debugPrint("Diagnosing patient...");
+//   }
+
+//   @override
+//   String get qualification => "BSN";
+
+//   @override
+//   bool get wearsLabCoat => false;
+// }
+
+// BASE CLASS IMPLENTATION
+
+// abstract class AnimalClass {
+//   void makeSound();
+// }
+
+// class DogClass implements AnimalClass {
+//   @override
+//   void makeSound() {
+//     print("Woof!");
+//   }
+// }
+
+// class CatClass implements AnimalClass {
+//   @override
+//   void makeSound() {
+//     print("Meow!");
+//   }
+// }
+
+// INHERITANCE IMPLEMENTATION
+// class AnimalClass {
+//   void giveBirth() {
+//     debugPrint("Animal giving birth...");
+//   }
+// }
+
+// class DogClass extends AnimalClass {}

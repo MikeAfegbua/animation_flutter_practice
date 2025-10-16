@@ -46,7 +46,10 @@
 // Would you like an example of a specific type of animation? 🚀
 
 
-
+// 9 CUSTOM PAINTER ANIMATION
+// Uses CustomPainter to create complex, custom animations.
+// Example: Drawing shapes, paths, and animating them.
+// Widget: CustomPaint, AnimatedBuilder
 
 
 
